@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Lab3 Quiz</title>
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		
+		:root{--accent:#2a9d8f;--danger:#e76f51;--bg:#f7f7f8}
+		html,body{height:100%;margin:0;padding:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:#0b1320}
+		.container{max-width:880px;margin:36px auto;background:white;border-radius:12px;padding:28px;box-shadow:0 8px 30px rgba(11,19,32,0.08);border:1px solid rgba(10,10,10,0.04)}
+		h1{font-size:1.8rem;margin:0 0 8px;color:var(--accent)}
+		p.lead{margin:0 0 20px;color:#334155}
+		form{display:flex;flex-direction:column;gap:18px}
+		fieldset{border:1px solid #e6e9ee;padding:14px;border-radius:8px}
+		legend{font-weight:600;padding:0 6px}
+		.choices{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+		label.choice{display:flex;align-items:center;gap:10px;padding:8px;border-radius:6px;background:#fbfdfe;border:1px solid transparent}
+		label.choice input{margin-right:8px}
+		.feedback{margin-left:auto;font-weight:600;display:flex;align-items:center;gap:6px}
+		.feedback img{width:20px;height:20px}
+		.result{display:flex;align-items:center;gap:12px;margin-top:8px}
+		.score{font-size:1.2rem;font-weight:700}
+		.congrats{color:var(--accent);font-weight:700}
+		button{background:var(--accent);color:white;padding:10px 14px;border:none;border-radius:8px;cursor:pointer;font-weight:600}
+		button:disabled{opacity:0.5;cursor:not-allowed}
+		.small{font-size:0.9rem;color:#475569}
+		.meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+		
+		@media (max-width:520px){.container{margin:16px;padding:16px}}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>JS Quiz</h1>
+		<p class="lead">Five-question only — each question is worth 20 points.</p>
+
+		<form id="quiz">
+			
+			<fieldset id="q1">
+				<legend>1) Which HTML element is used to create a clickable link?</legend>
+				<div class="choices">
+					<label class="choice"><input type="text" id="q1-input" name="q1" aria-label="Q1 answer" placeholder="Type your answer here"></label>
+				</div>
+				<div class="result" aria-live="polite"><div class="feedback" data-for="q1"></div></div>
+			</fieldset>
+
+			
+			<fieldset id="q2">
+				<legend>2) Select the correct CSS property to change text color:</legend>
+				<div class="choices" id="q2-choices">
+					
+				</div>
+				<div class="result" aria-live="polite"><div class="feedback" data-for="q2"></div></div>
+			</fieldset>
+
+			
+			<fieldset id="q3">
+				<legend>3) Which of the following are semantic HTML5 elements? (multiple correct answers!)</legend>
+				<div class="choices" id="q3-choices">
+					<label class="choice"><input type="checkbox" name="q3" value="article"> <span>article</span></label>
+					<label class="choice"><input type="checkbox" name="q3" value="div"> <span>div</span></label>
+					<label class="choice"><input type="checkbox" name="q3" value="nav"> <span>nav</span></label>
+					<label class="choice"><input type="checkbox" name="q3" value="span"> <span>span</span></label>
+				</div>
+				<div class="result" aria-live="polite"><div class="feedback" data-for="q3"></div></div>
+			</fieldset>
+
+			
+			<fieldset id="q4">
+				<legend>4) Which HTTP status code means "Not Found"?</legend>
+				<div class="choices">
+					<label class="choice"><select id="q4-select" name="q4" aria-label="Q4 select"><option value="">-- choose --</option><option value="200">200</option><option value="301">301</option><option value="404">404</option><option value="500">500</option></select></label>
+				</div>
+				<div class="result" aria-live="polite"><div class="feedback" data-for="q4"></div></div>
+			</fieldset>
+
+			
+			<fieldset id="q5">
+				<legend>5) Set the number of bits in a standard IPv4 address (use the slider):</legend>
+				<div class="choices">
+					<label class="choice"><input type="range" id="q5-range" name="q5" min="0" max="64" value="32"><span id="q5-val" style="margin-left:8px;font-weight:600">32</span></label>
+				</div>
+				<div class="result" aria-live="polite"><div class="feedback" data-for="q5"></div></div>
+			</fieldset>
+
+			<div class="meta">
+				<div class="small">Times taken: <span id="times">0</span></div>
+				<div>
+					<button type="button" id="submit">Submit</button>
+					<button type="button" id="reset">Reset</button>
+				</div>
+			</div>
+
+			<div id="summary" style="margin-top:12px"></div>
+		</form>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
